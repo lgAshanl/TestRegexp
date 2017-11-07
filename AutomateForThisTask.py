@@ -1,5 +1,4 @@
 import asyncio.queues
-import BadProgram
 
 
 class AutomateForThisTask:
@@ -21,7 +20,7 @@ class AutomateForThisTask:
                 self.x_edges[edge.left].append(edge.right)
         pass
 
-    def search(self, symbol, n):
+    def search(self, n):
         mark = []
         for i in range(self.number_vertexes):
             mark.append(n + 1)
@@ -29,9 +28,9 @@ class AutomateForThisTask:
         q = asyncio.queues.Queue()
         q.put_nowait([0, n])
         while not q.empty():
-            l = q.get_nowait()
-            v = l[0]
-            count = l[1]
+            pair = q.get_nowait()
+            v = pair[0]
+            count = pair[1]
             if count == 0:
                 return True
             if mark[v] > count:
