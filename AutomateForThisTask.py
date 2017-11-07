@@ -37,7 +37,7 @@ class AutomateForThisTask:
             if mark[v] > count:
                 mark[v] = count
             else:
-                raise BadProgram.BadProgram("Search.mark")
+                continue
 
             for u in self.x_edges[v]:
                 if mark[u] >= count:
